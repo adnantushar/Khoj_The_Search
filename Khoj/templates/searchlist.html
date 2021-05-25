@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+
+    <title>Khoj The Search App | Search List of User </title>
+
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}" >
+
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+{% endblock %}
+{% block start %}
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h2 style="font-size: 2em;text-align: center;color: #fff;font-weight: 100;">All Search {% if flag %} From {{start}} To {{end}} {% else %} Query Form {% endif %} </h2>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                {% if flag %}
+
+					{% for d in data %}
+						<p><b>TimeStamp : {{ d.timeStamp }}</b></p>
+						<h4>Input Values : {{d.inputValues}}</h4>
+						<br>
+						<br>
+
+					{% endfor %}
+                {% else %}
+				<form action="" method="post">
+					{% csrf_token %}
+                    <h4>Enter Start Date Time</h4><br>
+					<input class="text" type="datetime-local" name="startTime" placeholder="Start Time" required="">
+                    <br>
+                    <br>
+                    <h4>Enter End Date Time</h4>
+					<input class="text w3lpass" type="datetime-local" name="endtime" placeholder="End Time" required="">
+					<input type="submit" value="KHOJ">
+				</form>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+	<!-- //main -->
+
+{% endblock %}

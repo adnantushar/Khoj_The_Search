@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+
+    <title>Khoj The Search App | Home </title>
+
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}" >
+
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+{% endblock %}
+{% block start %}
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Khoj The Search {% if flag %} Result {% else %} Form {% endif %}</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                {% if flag %}
+                    <h4>Input Values : {{values}}</h4>
+                    <br>
+                    <h4>Search Values : {{searchValue}}</h4>
+                    <br>
+                    <p><b>Result : {% if khoj %} True {% else %} False {% endif %}</b></p>
+                {% else %}
+				<form action="" method="post">
+					{% csrf_token %}
+					<input class="text" type="text" name="InputValues" placeholder="Input Values" required="">
+					<input class="text w3lpass" type="text" name="SearchNumber" placeholder="Search Values" required="">
+					<input type="submit" value="KHOJ">
+				</form>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+	<!-- //main -->
+
+{% endblock %}

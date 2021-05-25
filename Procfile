@@ -1,0 +1,1 @@
+web: gunicorn Khoj_The_Search.wsgi --log-file -

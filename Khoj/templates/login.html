@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+
+    <title>Khoj The Search App | Login </title>
+
+{% endblock %}
+
+{% block style %}
+
+
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}" >
+
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+{% endblock %}
+
+{% block start %}
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>LogIn Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="" method="post">
+					{% csrf_token %}
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+                    {% if msg %}
+                    </br>
+						<h4>* {{msg}}</h4>
+                    {% endif %}
+					<input type="submit" value="LOGIN">
+				</form>
+				<p>Don't have an Account? <a href="{% url 'signup' %}"> Register Now!</a></p>
+
+			</div>
+		</div>
+	</div>
+	<!-- //main -->
+
+{% endblock %}

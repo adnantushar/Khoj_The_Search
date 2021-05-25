@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+
+    <title>Khoj The Search App | SignUp </title>
+
+{% endblock %}
+
+{% block style %}
+
+
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}" >
+
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+{% endblock %}
+
+{% block start %}
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="" method="post">
+					{% csrf_token %}
+					<input class="text" type="text" name="Username1" placeholder="First Name" required="">
+					<input class="text w3lpass" type="text" name="Username2" placeholder="Last Name" required="">
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					{% if flag %}
+						{% for emr in result.email %}
+
+							<h4> * {{emr}}</h4>
+							<br>
+						{% endfor %}
+					{% endif %}
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+					{% if flag %}
+						{% for pwr in result.password %}
+							<br>
+							<h4> * {{pwr}}</h4>
+						{% endfor %}
+					{% endif %}
+					<input type="submit" value="SIGNUP">
+				</form>
+				<p>Already have an Account? <a href="{% url 'login' %}"> Login Now!</a></p>
+			</div>
+		</div>
+	</div>
+	<!-- //main -->
+
+{% endblock %}
